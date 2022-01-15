@@ -127,7 +127,7 @@ echo "------------------------------"
 cd /home/pi/atv-rptr/src/rptr
 make
 sudo make install
-
+cd /home/pi
 
 # Download, compile and install the executable for hardware shutdown button
 #echo

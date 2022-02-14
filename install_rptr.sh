@@ -18,6 +18,8 @@ echo $(date -u) "New Build started" | sudo tee -a /var/log/rptr/initial_build_lo
 whoami | grep -q pi
 if [ $? != 0 ]; then
   echo "Install must be performed as user pi"
+  BuildLogMsg "0" "Exiting, not user pi"
+
   exit
 fi
 
@@ -33,7 +35,9 @@ if [ $? != 0 ]; then
   printf "\n"
   if [[ "$REPLY" = "d" || "$REPLY" = "D" ]]; then  # Allow to proceed for development
     echo "Continuing build......"
+    BuildLogMsg "0" "Warning, NOT BUSTER OS"
   else
+    BuildLogMsg "0" "Exiting, NOT BUSTER OS"
     exit
   fi
 fi
@@ -48,6 +52,7 @@ if [ "$1" == "-d" ]; then
   echo "-------------------------------------------------------------------"
   echo "----- Installing development version of the BATC ATV Repeater -----"
   echo "-------------------------------------------------------------------"
+  BuildLogMsg "0" "Installing Dev Version"
 elif [ "$1" == "-u" -a ! -z "$2" ]; then
   GIT_SRC="$2"
   echo
@@ -62,6 +67,7 @@ else
   echo "-----------------------------------------------------------------------"
   echo "----- Installing BATC Production version of the BATC ATV Repeater -----"
   echo "-----------------------------------------------------------------------"
+  BuildLogMsg "0" "Installing Production Version"
 fi
 
 # Update the package manager

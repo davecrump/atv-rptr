@@ -194,7 +194,7 @@ output0code=nec:0x17
 #output0code=2nec:0x17 (daisy chain)
 output0hdmiswitchpin=36
 output0i2cchannel=1
-output0netcommand=/press/bank/1/
+output0netcommand=/press/bank/1/8
 output0audioi2cbit=0
 
 input1name=Stream Input

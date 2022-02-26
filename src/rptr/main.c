@@ -1012,7 +1012,7 @@ void fbiThenKill(char *PathImageFile)
 
   snprintf(SystemCommand, 127, "sudo fbi -T 1 -noverbose -a %s >/dev/null 2>/dev/null", PathImageFile);
   system(SystemCommand);
-  usleep(200000);
+  usleep(400000);  // Increased from 0.2 s to improve reliability
 
   strcpy(SystemCommand, "sudo killall -9 fbi >/dev/null 2>/dev/null");
   system(SystemCommand);
